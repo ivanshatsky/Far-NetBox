@@ -1154,7 +1154,8 @@ UnicodeString ApiPath(UnicodeString APath)
 {
   UnicodeString Result = APath;
 
-  if (IsWin7() || (Result.Length() >= MAX_PATH))
+  // Max path for directories is 12 characters shorter than max path for files
+  if (IsWin7() || (Result.Length() >= MAX_PATH - 12))
   {
 //    if (GetConfiguration() != nullptr)
 //    {
